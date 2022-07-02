@@ -1,43 +1,22 @@
 def func(arg1, arg2):
     """Summary line.
 
-    Extended description of function.
+    This is a more description for de funcion fun.
 
-    Parameters
-    ----------
-    arg1 : int
-        Description of arg1
-    arg2 : str
-        Description of arg2
-
-    Returns
-    -------
-    bool
-        Description of return value
-
-    Raises
-    ------
-    AttributeError
-        The ``Raises`` section is a list of all exceptions
-        that are relevant to the interface.
-    ValueError
-        If `arg2` is equal to `arg1`.
-
-    See Also
-    --------
-    otherfunc: some other related function
-
-    Examples
-    --------
-    These are written in doctest format, and should illustrate how to
-    use the function.
-
-    >>> a=1
-    >>> b=2
-    >>> func(a,b)
-    True
+    :param arg1: Description of arg1
+    :type arg1: int
+    :param arg2: Description of arg2
+    :type arg2: str
+    :arg arg3: Description of arg3
+    :key key1: Description of key1
+    :return: Description of return value
+    :rtype: bool
+    :raise: None
+    :exception: Exception to raise
     """
+
     if arg1 == arg2:
         raise ValueError('arg1 must not be equal to arg2')
 
     return True
+
