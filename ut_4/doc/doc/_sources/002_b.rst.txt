@@ -1,0 +1,7 @@
+002_b module
+============
+
+.. automodule:: 002_b
+   :members:
+   :undoc-members:
+   :show-inheritance:
