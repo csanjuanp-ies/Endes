@@ -1,7 +1,0 @@
-002 module
-============
-
-.. automodule:: 002
-   :members:
-   :undoc-members:
-   :show-inheritance:
