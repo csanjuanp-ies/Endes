@@ -1,26 +1,11 @@
+from almacenes.Almacen import Almacen
 from dataclass.Prestamo import Prestamo
-class Prestamos:
-    _prestamos = []
-    def __len__(self):
-        return len(self._prestamos)
-
-    def __iter__(self):
-        return iter(self._prestamos)
-
-    def __getitem__(self, item):
-        if 0 < item < len(self._prestamos):
-            return self._prestamos[item]
-        return None
-
-    def append(self, other:Prestamo):
-        self._prestamos.append(other)
-
-    def remove(self, index:int):
-        if 0 < index < len(self._prestamos):
-            del self._prestamos[index]
+class Prestamos(Almacen):
+    def __init__(self):
+        super().__init__("Prestamos")
 
     def __str__(self):
         texto = ""
-        for prestamo in self._prestamos:
+        for prestamo in self._objetos:
             texto += f"\t[{str(prestamo)}],\n"
         return f"[\n{texto}]"

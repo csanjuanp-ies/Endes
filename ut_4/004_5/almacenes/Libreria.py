@@ -1,4 +1,4 @@
-from almacenes.Usuarios import Usuarios
+from almacenes.Usuarios import Editores
 from almacenes.Editores import Editores
 from almacenes.Libros import Libros
 from almacenes.Prestamos import Prestamos
@@ -9,10 +9,10 @@ from dataclass.Prestamo import Prestamo
 import datetime
 class Libreria:
     def __init__(self):
-        self._usuarios = Usuarios()
-        self._libros = Libros()
-        self._editores = Editores()
-        self._prestamos = Prestamos()
+        self.usuarios = Editores()
+        self.libros = Libros()
+        self.editores = Editores()
+        self.prestamos = Prestamos()
     def cargar_usuarios(self):
         NOMBRE = 0
         DIRECCION  = 1
@@ -24,7 +24,7 @@ class Libreria:
             ['Usuario 4', 'Dirección 4', datetime.datetime(2025, 12, 12)],
         ]
         for linea in data:
-            self._usuarios.append(Usuario(linea[NOMBRE], linea[DIRECCION], linea[FECHA_INGRESO]))
+            self.usuarios.append(Usuario(linea[NOMBRE], linea[DIRECCION], linea[FECHA_INGRESO]))
 
     def cargar_libros(self):
         NOMBRE = 0
@@ -37,7 +37,7 @@ class Libreria:
             ['Autor 4', 'Titulo 4', 400],
         ]
         for linea in data:
-            self._libros.append(Libro(linea[NOMBRE], linea[DIRECCION], linea[PRECIO]))
+            self.libros.append(Libro(linea[NOMBRE], linea[DIRECCION], linea[PRECIO]))
 
     def cargar_editores(self):
         NOMBRE = 0
@@ -49,9 +49,9 @@ class Libreria:
             ['Editor 4', 'Dirección 4'],
         ]
         for linea in data:
-            self._editores.append(Editor(linea[NOMBRE], linea[DIRECCION]))
+            self.editores.append(Editor(linea[NOMBRE], linea[DIRECCION]))
     def __str__(self):
-        return f"usuarios:\n{self._usuarios}\n" + \
-            f"editores:\n{self._editores}\n" + \
-            f"libros:\n{self._libros}\n" + \
-            f"Prestamos:\n{self._prestamos}"
+        return f"usuarios:\n{self.usuarios}\n" + \
+            f"editores:\n{self.editores}\n" + \
+            f"libros:\n{self.libros}\n" + \
+            f"Prestamos:\n{self.prestamos}"
