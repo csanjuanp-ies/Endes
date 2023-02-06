@@ -30,7 +30,6 @@ class App:
 
     @staticmethod
     def _gestionar_prestamos():
-        # TODO Falta de terminar este método
         fin = False
         while not fin:
             Menus.imprimir_menu_prestamos()
@@ -41,9 +40,25 @@ class App:
                 case Menus.MENU_PRESTAMOS.VER_PRESTAMOS.value:
                     Listados.imprimir_almacen(App.libreria.prestamos)
                 case Menus.MENU_PRESTAMOS.PRESTAR.value:
-                    pass
+                    App._gestionar_prestar()
                 case Menus.MENU_PRESTAMOS.DEVOLVER.value:
-                    pass
+                    App._gestionar_devolver()
+
+    @staticmethod
+    def _gestionar_prestar():
+        # mostrar libros
+        # pedir libro
+        # mostrar usuarios
+        # pedir usuario
+        # realizar prestamo a librearía
+        pass
+
+    @staticmethod
+    def _gestionar_devolver():
+        # mostrar prestamo
+        # pedir prestamo
+        # devolver libro a librería
+        pass
 
 
 App.main()

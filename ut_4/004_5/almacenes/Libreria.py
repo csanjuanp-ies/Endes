@@ -13,6 +13,13 @@ class Libreria:
         self.libros = Libros()
         self.editores = Editores()
         self.prestamos = Prestamos()
+
+    def __str__(self):
+        return f"usuarios:\n{self.usuarios}\n" + \
+            f"editores:\n{self.editores}\n" + \
+            f"libros:\n{self.libros}\n" + \
+            f"Prestamos:\n{self.prestamos}"
+
     def cargar_usuarios(self):
         NOMBRE = 0
         DIRECCION  = 1
@@ -50,8 +57,12 @@ class Libreria:
         ]
         for linea in data:
             self.editores.append(Editor(linea[NOMBRE], linea[DIRECCION]))
-    def __str__(self):
-        return f"usuarios:\n{self.usuarios}\n" + \
-            f"editores:\n{self.editores}\n" + \
-            f"libros:\n{self.libros}\n" + \
-            f"Prestamos:\n{self.prestamos}"
+
+    def hacer_prestamo(self, libro:Libro, usuario:Usuario):
+        # Comprobar disponibilidad del libro
+        # crear el préstamo en el almacén
+        pass
+
+    def devolover_libro(self, prestamo: Prestamo):
+        # devolver el libro al almacén
+        pass

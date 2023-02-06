@@ -1,3 +1,9 @@
+from dataclass.Editor import Editor
+from dataclass.Libro import Libro
+from dataclass.Prestamo import Prestamo
+from dataclass.Usuario import Usuario
+
+
 class Almacen:
     def __init__(self, titulo:str=""):
         self.titulo = titulo
@@ -14,7 +20,7 @@ class Almacen:
             return self._objetos[item]
         return None
 
-    def append(self, other:"Almacen"):
+    def append(self, other:Libro|Prestamo|Editor|Usuario):
         self._objetos.append(other)
 
     def remove(self, index:int):
