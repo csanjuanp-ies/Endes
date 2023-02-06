@@ -16,8 +16,9 @@ class TestPrestamos(unittest.TestCase):
         prestamo_1 = Prestamo("c")
         prestamo_1.libro = self.libro
         prestamo_1.usuario = self.usuario
+        prestamo_1.fecha_de_prestamo = datetime(2022, 12, 12)
         self.assertEqual(str(prestamo_1),
-                         "Libro:(1)b [b|100|]-Usuario:(1)a [a] |2022-12-12 00:00:00|(2023-02-06 00:00:00|None)")
+                         "Libro:(1)b [b|100|]-Usuario:(1)a [a] |2022-12-12 00:00:00|(2022-12-12 00:00:00|None)")
 
     def test_prestamo_tarde(self):
         prestamo_1 = Prestamo("c")
