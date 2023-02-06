@@ -30,6 +30,7 @@ class App:
 
     @staticmethod
     def _gestionar_prestamos():
+        # TODO Falta de terminar este método
         fin = False
         while not fin:
             Menus.imprimir_menu_prestamos()
