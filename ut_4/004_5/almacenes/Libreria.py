@@ -59,10 +59,9 @@ class Libreria:
             self.editores.append(Editor(linea[NOMBRE], linea[DIRECCION]))
 
     def hacer_prestamo(self, id_libro:int, id_usuario:int):
-        # TODO Comprobar disponibilidad del libro
         libro = self.get_libro_from_id(id_libro)
         usuario = self.get_usuario_from_id(id_usuario)
-        if libro.disponible is not None and usuario is not None:
+        if libro is not None and usuario is not None and libro.disponible:
             self.prestamos.realizar_prestamo(libro , usuario)
 
     def devolover_libro(self, prestamo: int):
