@@ -35,7 +35,6 @@ class Prestamo:
         self._usuario = valor
     @property
     def devuelto_correcto(self)->bool|None:
-        # TODO  Las compraciones debían ser por fecha, no incluir las horas para no tener problemas
         if self.fecha_de_devolucion is not None:
             return self.fecha_prevista_de_devolucion >= self.fecha_de_devolucion
         return None
