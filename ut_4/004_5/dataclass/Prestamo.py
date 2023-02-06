@@ -8,7 +8,8 @@ class Prestamo:
         self._libro:Libro|None = None
         self._usuario:Usuario|None = None
         self.asunto:str = asunto
-        self.fecha_de_prestamo:datetime = datetime.now()
+        fecha_actual = datetime.now()
+        self.fecha_de_prestamo:datetime = datetime(fecha_actual.year, fecha_actual.month, fecha_actual.day)
         self.fecha_prevista_de_devolucion:datetime = self.fecha_de_prestamo + Prestamo.DIAS_DE_PRESTAMO_POR_DEFECTO
         self.fecha_de_devolucion: datetime|None = None
 
@@ -16,10 +17,13 @@ class Prestamo:
         return self._libro == other._libro and \
             self._usuario == other._usuario and \
             self.fecha_de_prestamo == other.fecha_de_prestamo
+    def __str__(self):
+        return f"Libro:{self._libro}-Usuario:{self.usuario}" + \
+            f"({self.fecha_de_prestamo}|{self.fecha_de_devolucion})"
+
     @property
     def libro(self):
         return self._libro
-
     @libro.setter
     def libro(self, valor: Libro):
         self._libro = valor
@@ -30,9 +34,14 @@ class Prestamo:
     def usuario(self, valor: Usuario):
         self._usuario = valor
     @property
-    def devuelto_tarde(self):
+    def devuelto_correcto(self)->bool|None:
+        # TODO  Las compraciones debían ser por fecha, no incluir las horas para no tener problemas
         if self.fecha_de_devolucion is not None:
-            return self.fecha_prevista_de_devolucion <= self.fecha_de_devolucion
+            return self.fecha_prevista_de_devolucion >= self.fecha_de_devolucion
         return None
-    def cerrar_prestamo(self):
-        self.fecha_de_devolucion = datetime.now()
+    def cerrar_prestamo(self, fecha_devolucion:datetime|None):
+        if fecha_devolucion is None:
+            fecha_actual = datetime.now()
+            self.fecha_de_devolucion = datetime(fecha_actual.year, fecha_actual.month, fecha_actual.day)
+        else:
+            self.fecha_de_devolucion = datetime(fecha_devolucion.year, fecha_devolucion.month, fecha_devolucion.day)
