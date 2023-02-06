@@ -27,6 +27,7 @@ class Prestamo:
     @libro.setter
     def libro(self, valor: Libro):
         self._libro = valor
+        self._libro.disponible = False
     @property
     def usuario(self):
         return self._usuario
@@ -44,3 +45,5 @@ class Prestamo:
             self.fecha_de_devolucion = datetime(fecha_actual.year, fecha_actual.month, fecha_actual.day)
         else:
             self.fecha_de_devolucion = datetime(fecha_devolucion.year, fecha_devolucion.month, fecha_devolucion.day)
+
+        self._libro.disponible = True
