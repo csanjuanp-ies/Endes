@@ -12,8 +12,11 @@ class Libro:
     def __str__(self):
         return f"({self._id}){self.autor} [{self.titulo}|{self.precio}|]"
 
-    def __eq__(self, other:"Libro"):
-        return self._id == other._id
+    def __eq__(self, other):
+        if isinstance(other, Libro):
+            return self._id == other._id
+        elif isinstance(other, int):
+            return self._id == other
     def _get_next_id(self):
         Libro._next_id += 1
         return self._next_id

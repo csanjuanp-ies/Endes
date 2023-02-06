@@ -1,4 +1,4 @@
-from almacenes.Usuarios import Editores
+from almacenes.Usuarios import Usuarios
 from almacenes.Editores import Editores
 from almacenes.Libros import Libros
 from almacenes.Prestamos import Prestamos
@@ -9,7 +9,7 @@ from dataclass.Prestamo import Prestamo
 import datetime
 class Libreria:
     def __init__(self):
-        self.usuarios = Editores()
+        self.usuarios = Usuarios()
         self.libros = Libros()
         self.editores = Editores()
         self.prestamos = Prestamos()
@@ -58,11 +58,28 @@ class Libreria:
         for linea in data:
             self.editores.append(Editor(linea[NOMBRE], linea[DIRECCION]))
 
-    def hacer_prestamo(self, libro:Libro, usuario:Usuario):
-        # Comprobar disponibilidad del libro
-        # crear el préstamo en el almacén
-        pass
+    def hacer_prestamo(self, id_libro:int, id_usuario:int):
+        # TODO Comprobar disponibilidad del libro
+        libro = self.get_libro_from_id(id_libro)
+        usuario = self.get_usuario_from_id(id_usuario)
+        if libro.disponible is not None and usuario is not None:
+            self.prestamos.realizar_prestamo(libro , usuario)
 
-    def devolover_libro(self, prestamo: Prestamo):
-        # devolver el libro al almacén
-        pass
+    def devolover_libro(self, prestamo: int):
+        prestamo = self.get_prestamo_from_id(prestamo)
+        if prestamo is not None:
+            self.prestamos.devolver_libro(prestamo)
+
+    def get_prestamo_from_id(self, id_prestamo_a_buscar: int) -> Prestamo | None:
+        if 0<= id_prestamo_a_buscar < len(self.prestamos):
+            return self.prestamos[id_prestamo_a_buscar]
+
+    def get_libro_from_id(self, id_libro: int) -> Libro | None:
+        for libro in self.libros:
+            if libro == id_libro:
+                return libro
+
+    def get_usuario_from_id(self, id_usuario: int) -> Usuario | None:
+        for usuario in self.usuarios:
+            if usuario == id_usuario:
+                return usuario

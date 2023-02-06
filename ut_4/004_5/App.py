@@ -46,19 +46,17 @@ class App:
 
     @staticmethod
     def _gestionar_prestar():
-        # mostrar libros
-        # pedir libro
-        # mostrar usuarios
-        # pedir usuario
-        # realizar prestamo a librearía
-        pass
+        Listados.imprimir_almacen(App.libreria.libros)
+        libro = int(input("Libro?"))
+        Listados.imprimir_almacen(App.libreria.usuarios)
+        usuario = int(input("Usuario?"))
+        App.libreria.hacer_prestamo(libro, usuario)
 
     @staticmethod
     def _gestionar_devolver():
-        # mostrar prestamo
-        # pedir prestamo
-        # devolver libro a librería
-        pass
+        Listados.imprimir_almacen(App.libreria.prestamos)
+        prestamo = int(input("Prestamo?"))
+        App.libreria.devolover_libro(prestamo)
 
 
 App.main()

@@ -39,7 +39,7 @@ class Prestamo:
         if self.fecha_de_devolucion is not None:
             return self.fecha_prevista_de_devolucion >= self.fecha_de_devolucion
         return None
-    def cerrar_prestamo(self, fecha_devolucion:datetime|None):
+    def cerrar_prestamo(self, fecha_devolucion:datetime|None=None):
         if fecha_devolucion is None:
             fecha_actual = datetime.now()
             self.fecha_de_devolucion = datetime(fecha_actual.year, fecha_actual.month, fecha_actual.day)

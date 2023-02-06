@@ -1,3 +1,5 @@
+from datetime import datetime
+
 from almacenes.Almacen import Almacen
 from dataclass.Libro import Libro
 from dataclass.Prestamo import Prestamo
@@ -15,19 +17,15 @@ class Prestamos(Almacen):
         return f"[\n{texto}]"
 
     def realizar_prestamo(self, libro:Libro, usuario:Usuario):
-        # Crear nuevo Prestamo
-        # Establecer libro a no disponible
-        # Configurar datos del préstamo
-        # self.append(nuevo_prestamo)
-        pass
+        libro.disponible = False
+        nuevo_prestamo = Prestamo(usuario.nombre)
+        nuevo_prestamo.fecha_de_prestamo = datetime.now()
+        nuevo_prestamo.libro = libro
+        nuevo_prestamo.usuario = usuario
+        self.append(nuevo_prestamo)
 
     def devolver_libro(self, prestamo:Prestamo):
-        # Establecer disponible el libro
-        # Establecer fecha de devolución
-        # Devolver error si devolución tarde
-        pass
+        prestamo.cerrar_prestamo()
+        if not prestamo.devuelto_correcto:
+            return "Devuelto Tarde"
 
-    def get_index_del_prestamo(self, prestamo: Prestamo):
-        # buscar en todos los préstamos no cerrados
-        # devolver el índice
-        pass

@@ -1,6 +1,6 @@
 from almacenes.Almacen import Almacen
 from dataclass.Usuario import Usuario
-class Editores(Almacen):
+class Usuarios(Almacen):
     def __init__(self):
         super().__init__("Usuarios")
 
