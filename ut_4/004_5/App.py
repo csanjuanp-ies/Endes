@@ -38,7 +38,7 @@ class App:
                 case Menus.MENU_PRESTAMOS.SALIR.value:
                     break
                 case Menus.MENU_PRESTAMOS.VER_PRESTAMOS.value:
-                    Listados.imprimir_almacen(App.libreria.prestamos)
+                    Listados.imprimir_almacen_prestramos(App.libreria.prestamos)
                 case Menus.MENU_PRESTAMOS.PRESTAR.value:
                     App._gestionar_prestar()
                 case Menus.MENU_PRESTAMOS.DEVOLVER.value:
@@ -54,7 +54,7 @@ class App:
 
     @staticmethod
     def _gestionar_devolver():
-        Listados.imprimir_almacen(App.libreria.prestamos)
+        Listados.imprimir_almacen_prestramos(App.libreria.prestamos)
         prestamo = int(input("Prestamo?"))
         App.libreria.devolover_libro(prestamo)
 

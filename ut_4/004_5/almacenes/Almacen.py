@@ -16,7 +16,7 @@ class Almacen:
         return iter(self._objetos)
 
     def __getitem__(self, item):
-        if 0 < item < len(self._objetos):
+        if 0 <= item < len(self._objetos):
             return self._objetos[item]
         return None
 
