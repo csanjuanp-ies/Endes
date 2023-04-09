@@ -6,6 +6,6 @@ class Libros(Almacen):
 
     def __str__(self):
         texto = ""
-        for editor in self._objetos:
-            texto += f"\t[{str(editor)}],\n"
+        for libro in self._objetos:
+            texto += f"\t[{str(libro)}],\n"
         return f"[\n{texto}]"

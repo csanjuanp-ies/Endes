@@ -4,8 +4,6 @@ class Editores(Almacen):
     def __init__(self):
         super().__init__("Editores")
 
-
-
     def __str__(self):
         texto = ""
         for editor in self._objetos:

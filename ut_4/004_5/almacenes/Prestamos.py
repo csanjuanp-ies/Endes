@@ -24,7 +24,7 @@ class Prestamos(Almacen):
         nuevo_prestamo.usuario = usuario
         self.append(nuevo_prestamo)
 
-    def devolver_libro(self, prestamo:Prestamo):
+    def devolver_libro(self, prestamo:Prestamo)->bool:
         prestamo.cerrar_prestamo()
         if not prestamo.devuelto_correcto:
             return "Devuelto Tarde"

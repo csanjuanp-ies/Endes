@@ -50,3 +50,20 @@ class Prestamo:
             self.fecha_de_devolucion = datetime(fecha_devolucion.year, fecha_devolucion.month, fecha_devolucion.day)
 
         self._libro.disponible = True
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+

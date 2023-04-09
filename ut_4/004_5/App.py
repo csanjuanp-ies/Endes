@@ -1,6 +1,7 @@
 from almacenes.Libreria import Libreria
 from gui.Listados import Listados
 from gui.Menus import Menus
+from gui.Separadores import Separadores
 class App:
     libreria = Libreria()
     @staticmethod
@@ -50,13 +51,20 @@ class App:
         libro = int(input("Libro?"))
         Listados.imprimir_almacen(App.libreria.usuarios)
         usuario = int(input("Usuario?"))
-        App.libreria.hacer_prestamo(libro, usuario)
+        if App.libreria.hacer_prestamo(libro, usuario):
+            Separadores.imprinmir_texto("Reserva Realizada")
+        else:
+            Separadores.imprinmir_error("Reserva No Realizada")
 
     @staticmethod
     def _gestionar_devolver():
         Listados.imprimir_almacen_prestramos(App.libreria.prestamos)
         prestamo = int(input("Prestamo?"))
-        App.libreria.devolover_libro(prestamo)
+        if App.libreria.devolover_libro(prestamo):
+            Separadores.imprinmir_texto("Préstamo Devuelto")
+        else:
+            Separadores.imprinmir_error("Error al devolver")
+
 
 
 App.main()

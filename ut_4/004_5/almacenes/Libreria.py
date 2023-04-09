@@ -58,16 +58,23 @@ class Libreria:
         for linea in data:
             self.editores.append(Editor(linea[NOMBRE], linea[DIRECCION]))
 
-    def hacer_prestamo(self, id_libro:int, id_usuario:int):
+    def hacer_prestamo(self, id_libro:int, id_usuario:int)->bool|None:
+        prestamo_realizado = False
         libro = self.get_libro_from_id(id_libro)
         usuario = self.get_usuario_from_id(id_usuario)
         if libro is not None and usuario is not None and libro.disponible:
             self.prestamos.realizar_prestamo(libro , usuario)
+            prestamo_realizado = True
+
+        return prestamo_realizado
 
     def devolover_libro(self, prestamo: int):
+        devolucion_realizada = False
         prestamo = self.get_prestamo_from_id(prestamo)
         if prestamo is not None:
             self.prestamos.devolver_libro(prestamo)
+            devolucion_realizada = True
+        return devolucion_realizada
 
     def get_prestamo_from_id(self, id_prestamo_a_buscar: int) -> Prestamo | None:
         if 0<= id_prestamo_a_buscar < len(self.prestamos):
